@@ -1,0 +1,88 @@
+.post
+	margin-bottom 50px
+	width 740px
+	@extends $material
+	
+	&:first-child
+		margin-top 0
+	
+	&_thumbnail
+		text-align center
+		
+		img
+			max-width 640px
+			
+	&_title
+		color #202020
+		text-align center
+		font-size 1.8em
+		font-weight 400
+		margin-top 25px
+		
+		a 
+			color inherit
+			&:hover
+				text-decoration none
+	
+	&_excerpt
+		margin 1em auto 2.4em
+		width 88%
+		text-align center
+		font-size 1em
+		line-height 1.6em
+		font-weight 400
+		color #898989
+		
+	&_button
+		position relative
+		
+		&:before,
+		&:after
+			content ''
+			position absolute
+			top 16px
+			height 1px
+			background #eeeeee
+			width 42%
+			display block
+			
+		&:before
+			left 0
+		&:after
+			right 0
+			
+		& a
+			margin 0 auto
+			display block
+			width 55px
+			color $blue
+			font-weight 400
+			font-size 0.9em
+			padding 5px 15px
+			border-radius 20px
+			border 2px solid $blue
+			
+			transition background-color 150ms ease, color 150ms ease
+			
+			&:hover
+				color white
+				background-color $blue
+	
+	&_footer
+		display flex
+		justify-content space-between
+		margin-top 25px
+		
+	&_separator
+		border-color #eee
+		border-top none
+		margin 25px 0 0 0
+
+	&_date
+		position relative
+		font-weight 400
+		font-size 1em
+		text-align center
+		
+		&--large
+			font-size 1.5em

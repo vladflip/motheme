@@ -1,0 +1,26 @@
+.home
+	margin-top  60px
+	
+	&_posts
+		// width 700px
+		
+	.container
+		display flex
+		justify-content space-between
+	
+	&_more-posts
+		margin auto
+		text-align center
+		height 100px
+		a
+			@extends $material
+			display inline-block
+			font-size 1.3em
+			padding 10px 25px
+			margin auto
+			cursor pointer
+			transition color 250ms ease-in-out, background-color 250ms ease-in-out
+			
+			&:hover
+				color white
+				background-color darken($blue, 10%)

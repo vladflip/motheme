@@ -1,0 +1,68 @@
+.footer
+	margin-top 50px
+	
+	&_top, &_bottom
+		.container
+			display flex
+			justify-content space-between
+			align-items center
+			height 100%
+	
+	&_logo
+		background url(../img/logo.png) center no-repeat
+		background-size contain
+		height 300px
+		
+	&_top
+		padding 30px 0
+		background-color darken($background, 10%)
+		
+		.container div
+			width 480px
+		
+	&_bottom
+		height 60px
+		padding 0 10px
+		background-color $blacker
+		color white
+		
+	&_title
+		margin 0 0 10px 0
+		text-align center
+		
+	&_instagram
+		width 224px
+		height 260px
+	
+	&_insta-list
+		margin 0 auto
+		padding 0
+		list-style none
+		width 220px
+		height 220px
+		
+		li
+			margin 5px
+			float left
+			border-radius 10px
+			width 100px
+			height 100px
+			cursor pointer
+			
+			background-position center
+			background-size cover
+			background-repeat no-repeat
+			
+			a
+				display inline-block
+				width 100%
+				height 100%
+		
+	&_copyrights
+		font-size .9em
+		
+	&_socials
+		font-size 1.5em
+		
+		a
+			padding 5px

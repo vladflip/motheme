@@ -1,0 +1,30 @@
+.slider
+	cursor grab
+	
+	&_item
+		width 100%
+		background-position top center
+		background-size cover
+		background-repeat no-repeat
+
+		// fix blink owl-carousel
+		-webkit-backface-visibility: hidden;
+		-webkit-transform: translateZ(0) scale(1.0, 1.0);
+		img
+			display block
+		
+	.owl-controls
+		text-align center
+		
+		.owl-dot
+			display inline-block
+			cursor pointer
+			background-color #c0c0c0
+			border-radius 20px
+			width 14px
+			height 14px
+			margin 5px 7px
+			
+			&.active
+				background-color $green
+			

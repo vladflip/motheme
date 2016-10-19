@@ -1,0 +1,43 @@
+$green = #36b44a
+$blue = #374fa2
+$black = #151515
+$black2 = #1d1e18
+
+$mainfont = #2f2f2f
+$blacker = lighten(desaturate(mix($blue, black, 30%), 80%), 5%)
+$background = desaturate(lighten(mix($blue, grey), 90%), 60%)
+
+$material
+	background-color white
+	box-shadow 0px 3px 3px 0px rgba(0,0,0,0.05)
+	padding 40px 30px
+	
+@font-face
+	font-family Days
+	src url(../fonts/days.ttf)
+
+body
+	margin 0
+	padding 0
+	background-color $background
+	// #262626
+	color $mainfont
+	font-family 'Roboto Slab', serif
+
+.container
+	width 1180px
+	margin auto
+
+// wp style for centered image
+.aligncenter
+	display block
+	margin 10px auto
+a
+	text-decoration none
+	color inherit
+
+.post_wp-content a, .page_content a
+	color $green
+	
+	&:hover
+		text-decoration underline

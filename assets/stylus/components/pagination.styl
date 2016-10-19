@@ -1,0 +1,28 @@
+.pagination
+	text-align center
+	
+	.wp-pagenavi
+		
+		display inline-block
+		
+		.pages, .current, .page, .nextpostslink, 
+		.previouspostslink, .first, .last
+			@extends $material
+			padding 8px 20px	
+			font-size 1em
+			text-align center
+			transition color 250ms ease-in-out, background-color 250ms ease-in-out
+		
+		.pages
+			margin-right 25px
+			
+		.current, .page, .nextpostslink, .previouspostslink,
+		.last, .first
+			&:hover
+				color white
+				background-color darken($blue, 10%)
+		
+		.current
+			color white
+			background-color darken($blue, 10%)
+			
