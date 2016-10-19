@@ -12,6 +12,23 @@
 	);
 
 	$socials = get_posts($socargs);
+
+	$title = '';
+	$description = '';
+
+	if(is_single()){
+		$title = get_the_title();
+		$description = strip_tags(get_the_excerpt($post->ID));
+	}
+	elseif(is_page()){
+		$title = get_the_title('') . ' - '; 
+		$title .= get_bloginfo('name');
+		$description = get_bloginfo('description');
+	}
+	else{
+		$title = get_bloginfo('name');
+		$description = get_bloginfo('description');
+	}
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +36,10 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>Молодежная организация | ХНЭУ</title>
+		<title><?= $title; ?></title>
+
+		<meta name="Description" content="<?= $description ?>">
+
 		<link rel="shortcut icon" href="<?=THEME_URI?>/img/favicon.png" type="image/x-icon">
 		<?php wp_enqueue_style('main-style'); ?>
 		<?php wp_head(); ?>
