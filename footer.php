@@ -17,7 +17,9 @@
 		<div class="footer">
 			<div class="footer_top">
 				<div class="container">
-					<div class="footer_logo"></div>
+					<div class="footer_logo">
+						<img src="<?=get_bloginfo('template_directory')?>/img/logo-new.png" alt="">
+					</div>
 					<div class="footer_instagram">
 						<h3 class="footer_title">Instagram</h3>
 						<ul class="footer_insta-list">

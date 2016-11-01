@@ -78,7 +78,6 @@
 
 		</div>
 
-		<div class="title">
-			<div class="title_big">Молодежная Организация</div>
-			<div class="title_small">ХНЭУ имени С. Кузнеца</div>
+		<div class="logo">
+			<img src="<?=get_bloginfo('template_directory')?>/img/logo-new.png" alt="Лого Молодежной Организации ХНЭУ имени Семена Кузнеца">
 		</div>
