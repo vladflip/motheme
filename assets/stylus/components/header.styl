@@ -2,6 +2,8 @@
 // 95D78A
 // B1E4B8
 
+$menu_color = #999
+
 .header
 	background-color $blacker
 	z-index 20
@@ -26,7 +28,7 @@
 			transition all 250ms ease-in-out
 			
 			&:hover
-				color darken($green, 10%)
+				color $menu_color
 .logo
 	text-align center
 	margin 30px 0
@@ -58,11 +60,11 @@
 				font-weight 700
 				
 			&:hover
-				color darken($green, 10%)
+				color $menu_color
 				
 		&>li.current-menu-item,
 		&>li.current-menu-parent
-			color darken($green, 10%)
+			color $menu_color
 				
 	&_list li:hover &_sub
 		opacity 1
