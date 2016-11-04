@@ -5,7 +5,8 @@ var gulp = require('gulp'),
 	stylus = require('gulp-stylus'),
 	uglify = require('gulp-uglify'),
 	coffee = require('gulp-coffeeify'),
-	prefix = require('gulp-autoprefixer');
+	prefix = require('gulp-autoprefixer'),
+	server = require('browser-sync');
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,12 @@ var sDest = 'assets/stylus';
 
 var cDest = 'assets/coffee';
 
-gulp.task('default', ['stylus', 'coffee'], function(){
+gulp.task('default', ['stylus', 'coffee', 'server'], function(){
 	gulp.watch(sDest + '/**/*', ['stylus']);
 
 	gulp.watch(cDest + '/**/*', ['coffee']);
+
+	gulp.watch('*.php', server.reload);
 });
 
 function showError(e) {
@@ -30,6 +33,15 @@ function showError(e) {
 	this.emit('end');
 }
 
+gulp.task('server', function(){
+	server.init({
+		proxy: 'localhost',
+		ghostMode: false,
+		open: false,
+		notify: false
+	})
+});
+
 /*
 |--------------------------------------------------------------------------
 | Stylus Task
@@ -37,16 +49,16 @@ function showError(e) {
 */
 
 gulp.task('stylus', function(){
-	return gulp.src(sDest + '/main.styl')
-				.pipe(stylus({
-					compress: false
-				}))
-				.on('error', showError)
-				.pipe(notify('Compiled : Stylus'))
-				.pipe(prefix({browsers: ['last 2 versions']}))
-				.pipe(minify())
-				.pipe(rename('style.css'))
-				.pipe(gulp.dest('css'));
+	gulp.src(sDest + '/main.styl')
+		.pipe(stylus({
+			compress: false
+		}))
+		.on('error', showError)
+		.pipe(prefix())
+		.pipe(minify())
+		.pipe(rename('style.css'))
+		.pipe(gulp.dest('css'))
+		.pipe(server.stream());
 });
 /*
 |--------------------------------------------------------------------------
@@ -55,13 +67,15 @@ gulp.task('stylus', function(){
 */
 
 gulp.task('coffee', function(){
-	return gulp.src(cDest + '/index.coffee')
-				.pipe(coffee())
-				.on('error', showError)
-				.pipe(notify('Compiled : Coffee'))
-				.pipe(uglify())
-				.pipe(rename('script.js'))
-				.pipe(gulp.dest('js'));
+	gulp.src(cDest + '/index.coffee')
+		.pipe(coffee())
+		.on('error', showError)
+		.pipe(uglify())
+		.pipe(rename('script.js'))
+		.pipe(gulp.dest('js'))
+		.on('end', function(){
+			server.reload();
+		});
 });
 
 /*

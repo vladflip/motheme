@@ -75,12 +75,24 @@ function registerMenu() {
 
 function include_scripts_and_styles(){
 
-	// wp_enqueue_script('main-script', THEME_URI . '/js/script.js', array(
-	// 	'jquery'
-	// ), '1', true);
+	wp_enqueue_script('underscore', 'https://unpkg.com/underscore@1.8.3/underscore-min.js',
+		[], true
+	);
+	wp_enqueue_script('moment', 'https://unpkg.com/moment@2.15.2/min/moment.min.js',
+		[], true
+	);
+
+	wp_enqueue_script('clndr', THEME_URI . '/js/vendor/clndr.js', array(
+		'jquery', 'underscore',
+		'moment'
+	), true);
 
 	wp_enqueue_script('smoothscroll', THEME_URI . '/js/vendor/smoothscroll.min.js',
 		array('jquery'), '1', true);
+
+	wp_enqueue_script('main-script', THEME_URI . '/js/script.js', array(
+		'jquery'
+	), true);
 
 	wp_register_style('main-style', THEME_URI.'/css/style.css' );
 

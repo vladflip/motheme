@@ -8,6 +8,18 @@
 ?>
 
 <div class="sidebar">
+
+	<div class="sidebar_widget">
+		
+		<h3 class="sidebar_header">Наши события</h3>
+
+		<div class="sidebar_content">
+			
+			<div id="calendar"></div>
+
+		</div>
+
+	</div>
 			
 	<div class="sidebar_widget">
 		
@@ -34,3 +46,24 @@
 	</div>
 		
 </div>
+
+<script id="clndr-template" type="text/template">
+	<div class="clndr-controls">
+		<div class="clndr-previous-button">&lsaquo;</div>
+		<div class="clndr-month"><%= month %></div>
+		<div class="clndr-next-button">&rsaquo;</div>
+	</div>
+	
+	<div class="clndr-grid">
+		<div class="clndr-weekdays">
+			<% _.each(daysOfTheWeek, function (day) { %>
+				<div class="clndr-weekday"><%= day %></div>
+			<% }); %>
+		</div>
+		<div class="clndr-days">
+		<% _.each(days, function (day) { %>
+			<div class="<%= day.classes %>"><%= day.day %></div>
+		<% }); %>
+		</div>
+	</div>
+</script>
