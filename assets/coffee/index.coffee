@@ -23,11 +23,64 @@ $(window).load ->
 		events: [
 			{
 				date: '2016-11-04'
+				name: 'The best event'
+				excerpt: 'Come here and be the best'
+				link: 'vk.com'
 			}
 			{
 				date: '2016-10-31'
+				name: 'The best event'
+				excerpt: 'Come here and be the best'
+				link: 'vk.com'
 			}
 			{
 				date: '2016-11-15'
+				name: 'The best event'
+				excerpt: 'Come here and be the best'
+				link: 'vk.com'
+			}
+			{
+				date: '2016-11-15'
+				name: 'The best event'
+				excerpt: 'Come here and be the best'
+				link: 'vk.com'
+			}
+			{
+				date: '2016-11-15'
+				name: 'The best event'
+				excerpt: 'Come here asd asdf and be the best'
+				link: 'vk.com'
+			}
+			{
+				date: '2016-11-15'
+				name: 'The best event'
+				excerpt: 'Come here asd asdf and be the best'
+				link: 'vk.com'
+			}
+			{
+				date: '2016-11-15'
+				name: 'The best event'
+				excerpt: 'Come here asd asdf and be the best'
+				link: 'vk.com'
 			}
 		]
+
+		clickEvents:
+
+			click: (o) ->
+				if not o.events.length then return
+
+				events = $('#calendar-events')
+				calendar = $('#calendar')
+
+				t = _.template($('#clndr-events-template').html())({events: o.events})
+
+				events.html(t)
+
+				calendar.fadeOut(300)
+
+				events.children('#calendar-event-close').click ->
+					calendar.fadeIn(300)
+					events.html('')
+
+				events.children('#calendar-events-list').simplebar()

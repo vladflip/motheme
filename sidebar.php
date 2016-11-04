@@ -13,7 +13,9 @@
 		
 		<h3 class="sidebar_header">Наши события</h3>
 
-		<div class="sidebar_content">
+		<div class="sidebar_content clndr-content">
+
+			<div class="events" id="calendar-events"></div>
 			
 			<div id="calendar"></div>
 
@@ -65,5 +67,23 @@
 			<div class="<%= day.classes %>"><%= day.day %></div>
 		<% }); %>
 		</div>
+	</div>
+</script>
+
+<script id="clndr-events-template" type="text/template">
+	<div id="calendar-event-close" class="event-close">&#10007;</div>
+	<div id="calendar-events-list" class="simplebar events-list">
+		<% _.each(events, function (event) { %>
+			<a href="<%= event.link %>" target="_blank">
+				<div class="event">
+					<div class="event-header">
+						<%= event.name %>
+					</div>
+					<div class="event-excerpt">
+						<%= event.excerpt %>
+					</div>
+				</div>
+			</a>
+		<% }); %>
 	</div>
 </script>
