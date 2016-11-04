@@ -75,9 +75,6 @@ function registerMenu() {
 
 function include_scripts_and_styles(){
 
-	wp_enqueue_script('stickyjs', THEME_URI . '/js/vendor/jquery.sticky.js',
-		array('jquery'), '1', true);
-
 	wp_enqueue_script('smoothscroll', THEME_URI . '/js/vendor/smoothscroll.min.js',
 		array('jquery'), '1', true);
 
