@@ -25,13 +25,11 @@ class Clndr
 
 			ready: =>
 				@getPosts moment()
-				@cacheDate moment()
 
 			clickEvents:
 
 				onMonthChange: (d) =>
 					@getPosts d
-					@cacheDate d
 
 				click: (o) ->
 					if not o.events.length then return
@@ -69,5 +67,6 @@ class Clndr
 			url: ajaxUrl.url
 			success: (res) =>
 				@updateEvents(res)
+				@cacheDate date
 
 module.exports = Clndr
