@@ -2,5 +2,5 @@ $ = jQuery
 
 Clndr = require './clndr'
 
-$(window).load ->
+$(document).ready ->
 	new Clndr

@@ -12,6 +12,32 @@ add_action('init', 'include_scripts_and_styles');
 add_action('init', 'register_custom_posts');
 add_action('init', 'registerMenu');
 
+function starter_scripts() {
+    wp_deregister_script( 'jquery' );
+    wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
+    wp_enqueue_script( 'jquery' );
+
+    wp_enqueue_style( 'starter-style', get_stylesheet_uri() );
+}
+
+function disable_wp_emojicons() {
+
+  // all actions related to emojis
+  remove_action( 'admin_print_styles', 'print_emoji_styles' );
+  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+  remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+  remove_action( 'wp_print_styles', 'print_emoji_styles' );
+  remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+  remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+  remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+
+  // filter to remove TinyMCE emojis
+  add_filter( 'tiny_mce_plugins', 'disable_emojicons_tinymce' );
+}
+add_action( 'init', 'disable_wp_emojicons' );
+
+add_action( 'wp_enqueue_scripts', 'starter_scripts' );
+
 // ---------------------------------------------
 // CREATE CUSTOM POSTS
 // ---------------------------------------------
