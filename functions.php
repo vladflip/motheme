@@ -137,3 +137,50 @@ function getTheDate($id) {
 
 	return $dayFormatted . ' ' . $months[$month-1] . ' <span class="post_date--large">' . $year . '</span>';
 }
+
+add_action('wp_enqueue_scripts', 'localize_my_url');
+add_action('wp_ajax_calendar-events', 'get_calendar_events');
+add_action('wp_ajax_nopriv_calendar-events', 'get_calendar_events');
+
+function localize_my_url(){
+	wp_localize_script('main-script', 'ajaxUrl',['url' => admin_url('admin-ajax.php')]);
+}
+
+date_default_timezone_set('Europe/Kyiv');
+
+function get_calendar_events(){
+
+	$date = $_POST['date'];
+
+	$from = date('Y-m-d', strtotime($date." last day of -2 month"));
+
+	$to = date('Y-m-d', strtotime($date." first day of +1 month"));
+
+	$posts = get_posts([
+		'category' => get_cat_ID('Event'),
+		'meta_query' => [
+			'relation' => 'AND',
+			[
+				'key' => 'date',
+				'value' => [$from, $to],
+				'compare' => 'BETWEEN',
+				'type' => 'DATE'
+			]
+		]
+	]);
+
+	$result = [];
+
+	foreach ($posts as $post) {
+		$res = [];
+		$res['date'] = get_post_meta($post->ID, 'date', true);
+		$res['name'] = get_post_meta($post->ID, 'name', true);
+		$res['excerpt'] = get_post_meta($post->ID, 'desc', true);
+		$res['link'] = get_permalink($post->ID);
+		$result[] = $res;
+	}
+
+	echo json_encode($result);
+
+	wp_die();
+}
