@@ -146,8 +146,6 @@ function localize_my_url(){
 	wp_localize_script('main-script', 'ajaxUrl',['url' => admin_url('admin-ajax.php')]);
 }
 
-date_default_timezone_set('Europe/Kyiv');
-
 function get_calendar_events(){
 
 	$date = $_POST['date'];
