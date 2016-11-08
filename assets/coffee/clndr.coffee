@@ -54,7 +54,7 @@ class Clndr
 		@cached.push date.format('YYYY-MM')
 
 	updateEvents: (events) =>
-		@events = _.uniq _.union(@events, events), false, (i) -> i.date
+		@events = _.uniq _.union(@events, events), false, (i) -> i.name
 		@clndr.setEvents @events
 
 	getPosts: (date) =>
