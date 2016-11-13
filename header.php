@@ -79,6 +79,4 @@
 
 		</div>
 
-		<div class="logo">
-			<img src="<?=get_bloginfo('template_directory')?>/img/logo-new.png" alt="Лого Молодежной Организации ХНЭУ имени Семена Кузнеца">
-		</div>
+		<div class="logo"></div>
