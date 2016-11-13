@@ -66,7 +66,6 @@ class Clndr
 				date: date.format('YYYY-MM-DD')
 			url: ajaxUrl.url
 			success: (res) =>
-				console.log res
 				@updateEvents(res)
 				@cacheDate date
 

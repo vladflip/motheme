@@ -156,6 +156,7 @@ function get_calendar_events(){
 
 	$posts = get_posts([
 		'category' => get_cat_ID('Event'),
+		'numberposts' => -1,
 		'meta_query' => [
 			'relation' => 'AND',
 			[
