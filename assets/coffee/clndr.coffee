@@ -60,7 +60,7 @@ class Clndr
 	getPosts: (date) =>
 		if @cached.indexOf(date.format('YYYY-MM')) isnt -1 then return
 		$.post
-			dataType: 'json'
+			# dataType: 'json'
 			data:
 				action: 'calendar-events'
 				date: date.format('YYYY-MM-DD')
