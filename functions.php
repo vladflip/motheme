@@ -18,6 +18,16 @@ add_action('init', 'registerMenu');
 
 function register_custom_posts() {
 
+	register_post_type( 'events',
+		array(
+			'label' => 'Events',
+			'public' => true,
+			'menu_position' => 15,
+			'menu_icon' => 'dashicons-calendar-alt',
+			'supports' => array( 'title', 'custom-fields', 'excerpt')
+		)
+	);
+
 	register_post_type( 'usefull-links',
 		array(
 			'label' => 'Ссылки',
@@ -168,6 +178,20 @@ function get_calendar_events(){
 		]
 	]);
 
+	$customs = get_posts([
+		'post_type' => 'events',
+		'numberposts' => -1,
+		'meta_query' => [
+			'relation' => 'AND',
+			[
+				'key' => 'date',
+				'value' => [$from, $to],
+				'compare' => 'BETWEEN',
+				'type' => 'DATE'
+			]
+		]
+	]);
+
 	$result = [];
 
 	foreach ($posts as $post) {
@@ -175,6 +199,15 @@ function get_calendar_events(){
 		$res['date'] = get_post_meta($post->ID, 'date', true);
 		$res['name'] = get_post_meta($post->ID, 'name', true);
 		$res['excerpt'] = get_post_meta($post->ID, 'desc', true);
+		$res['link'] = get_permalink($post->ID);
+		$result[] = $res;
+	}
+
+	foreach ($customs as $post) {
+		$res = [];
+		$res['date'] = get_post_meta($post->ID, 'date', true);
+		$res['name'] = get_the_title($post->ID);
+		$res['excerpt'] = get_the_excerpt($post->ID);
 		$res['link'] = get_permalink($post->ID);
 		$result[] = $res;
 	}
