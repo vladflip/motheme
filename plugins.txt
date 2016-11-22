@@ -1,0 +1,7 @@
+imsanity
+post views counter
+slider (vladflip)
+updraftplus - backup/restore
+visitors traffic real time statistics
+wp smush
+wp-pagenavi
