@@ -14,8 +14,6 @@
 
 <?php echo do_shortcode('[slider]'); ?>
 
-<script type="text/javascript" src="http://vk.com/js/api/share.js?93" charset="windows-1251"></script>
-
 <div class="home">
 		
 	<div class="container">

@@ -80,3 +80,6 @@
 		</div>
 
 		<div class="logo"></div>
+
+
+		<script type="text/javascript" src="http://vk.com/js/api/share.js?93" charset="windows-1251"></script>
