@@ -18,7 +18,7 @@
 			</script>
 		</div>
 		<div class="post_share">
-			<div class="fb-share-button" data-href="http://fuck.fuck" data-layout="button" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?=urlencode($link)?>">Share</a></div>
+			<div class="fb-share-button" data-href="<?=$link?>" data-layout="button" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?=urlencode($link)?>">Share</a></div>
 		</div>
 	</div>
 
