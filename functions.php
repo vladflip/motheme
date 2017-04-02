@@ -12,6 +12,25 @@ add_action('init', 'include_scripts_and_styles');
 add_action('init', 'register_custom_posts');
 add_action('init', 'registerMenu');
 
+// Allow editors to see Appearance menu
+$role_object = get_role( 'editor' );
+$role_object->add_cap( 'edit_theme_options' );
+function hide_menu() {
+ 
+    // Hide theme selection page
+    remove_submenu_page( 'themes.php', 'themes.php' );
+ 
+    // Hide widgets page
+    remove_submenu_page( 'themes.php', 'widgets.php' );
+ 
+    // Hide customize page
+    global $submenu;
+    unset($submenu['themes.php'][6]);
+ 
+}
+ 
+add_action('admin_head', 'hide_menu');
+
 // ---------------------------------------------
 // CREATE CUSTOM POSTS
 // ---------------------------------------------
